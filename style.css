@@ -5,6 +5,11 @@ header{
     font-family: sans-serif;
     text-align: center;
     font-size: 40px;
+    background-image: url("../images/logo_best_recipe.png")
+
+    /*background: url("../images/concrete_seamless.png");
+}*/
+
 }
 
 /*.row{
@@ -16,17 +21,23 @@ header{
     margin-left: 400 px;
 }
 
-.videos{
+.videos, 
+.recipe
+{
     display:flex;
     justify-content: space-between;
     
 }
+
+.recipe-Item,
 .video-Item{
     height: 200px;
     width: 25%;
     background-color: rgba(197, 38, 126, 0.5);
     color: white;
     text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 
@@ -39,4 +50,8 @@ header{
 .right-panel{
     width:30%;
     float:right;
+}
+
+form{
+    margin-left: 40px;
 }

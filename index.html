@@ -68,7 +68,18 @@ var ApiKey = "280029588e92537b7a82371cbb66b661";
 var search = $("#input-Search-Ingredient").val().trim();;
 var queryURL= "https://www.food2fork.com/api/search?key="+ ApiKey + "&q="+ search; // + "&page=2";
 
+//https://www.food2fork.com/api/search?key=280029588e92537b7a82371cbb66b661&q=dessert
 
+
+/*"publisher": "All Recipes",
+"f2f_url": "http://food2fork.com/view/11332",
+      "title": "Dessert Crepes",
+      "source_url": "http://allrecipes.com/Recipe/Dessert-Crepes/Detail.aspx",
+      "recipe_id": "11332",
+      "image_url": "http://static.food2fork.com/42741693ad.jpg",
+      "social_rank": 99.9999999998884,
+      "publisher_url": "http://allrecipes.com"
+      */
 
   $.ajax({
         url: queryURL,
@@ -83,6 +94,9 @@ var queryURL= "https://www.food2fork.com/api/search?key="+ ApiKey + "&q="+ searc
     recipe.addClass("recipe-Item");
     console.log(response["recipes"]);
     recipe.text(response["recipes"][0].title);
+    recipe.text(response["recipes"][0].source_url);
+    recipe.text(response["recipes"][0].image_url);
+
     $(".recipe").append(recipe);
 
     });
