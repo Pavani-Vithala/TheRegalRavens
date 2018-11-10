@@ -15,19 +15,38 @@
           BEST RECIPE - BEST PRICE
       </header>
   </body>
-  <div id="video">VIDEO RECIPE</div>
-  <div id="video2">VIDEO RECIPE 2</div>
-  <div id="video3">VIDEO RECIPE 3</div>
-  <form>
-    <div class="row">
-        <div class="form-group col-md-6">
-            <label for="input-Search-Ingredient"></label>
-            <input type="Ingredient" class="form-control" id="input-Search-Ingredient" placeholder="Ingredient">
-            <button id="searchIng">Search</button>
-          </div>
-     
-    </div>
-  </form>
+
+  <div class="left-panel">
+        <div class="videos">
+            <div class="video-Item">VIDEO RECIPE 1</div>
+            <div class="video-Item">VIDEO RECIPE 2</div>
+            <div class="video-Item">VIDEO RECIPE 3</div>
+        </div>
+        <div class="recipe">
+            <div class="recipe-Item"> RECIPE 1</div>
+            <div class="recipe-Item"> RECIPE 2</div>
+            <div class="recipe-Item"> RECIPE 3</div>
+
+        </div>
+
+  </div>
+  
+
+
+<div class="right-panel">
+        <form>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="input-Search-Ingredient"></label>
+                    <input type="Ingredient" class="form-control" id="input-Search-Ingredient" placeholder="Ingredient">
+                    <button id="searchIng">Search</button>
+                    </div>
+            </div>
+        </form>
+</div>
+
+  
+  
 
 <!--API KEY RECIPES
 key: API Key
@@ -39,13 +58,15 @@ key: API Key
 -->
 
 <script>
+var ajaxResponse;
+
 $("#searchIng").on("click", function(event) {
 
  event.preventDefault();
 
-var ApiKey = "d0bcb31eb08ea0a4b15c4b52b6bb2d6f";
+var ApiKey = "280029588e92537b7a82371cbb66b661";
 var search = $("#input-Search-Ingredient").val().trim();;
-var queryURL= "https://www.food2fork.com/api/search?key="+ ApiKey + "&q="+ search + "&page=2";
+var queryURL= "https://www.food2fork.com/api/search?key="+ ApiKey + "&q="+ search; // + "&page=2";
 
 
 
@@ -55,10 +76,18 @@ var queryURL= "https://www.food2fork.com/api/search?key="+ ApiKey + "&q="+ searc
       })
 
 .then(function(response) {
-console.log(response);
+    response = JSON.parse(response);
+    // console.log(response.count);
 
+    var recipe = $("<div>");
+    recipe.addClass("recipe-Item");
+    console.log(response["recipes"]);
+    recipe.text(response["recipes"][0].title);
+    $(".recipe").append(recipe);
 
-});
+    });
+}).error(function(err){
+    console.log(err);
 });
 
 

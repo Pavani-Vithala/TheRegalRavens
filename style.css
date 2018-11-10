@@ -15,3 +15,28 @@ header{
 .row{
     margin-left: 400 px;
 }
+
+.videos{
+    display:flex;
+    justify-content: space-between;
+    
+}
+.video-Item{
+    height: 200px;
+    width: 25%;
+    background-color: rgba(197, 38, 126, 0.5);
+    color: white;
+    text-align: center;
+}
+
+
+
+.left-panel{
+    width:70%;
+    float:left;
+}
+
+.right-panel{
+    width:30%;
+    float:right;
+}
