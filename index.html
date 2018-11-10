@@ -7,6 +7,8 @@
   <!-- Bootstrap CSS CDN  -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" href="style.css">
+ <!-- JQuery   -->
+  <script src="https://code.jquery.com/jquery.js"></script>
 
   <body>
       <header>
@@ -20,8 +22,44 @@
     <div class="row">
         <div class="form-group col-md-6">
             <label for="input-Search-Ingredient"></label>
-            <input type="Search" class="form-control" id="input-Search-Ingredient" placeholder="Search">
+            <input type="Ingredient" class="form-control" id="input-Search-Ingredient" placeholder="Ingredient">
+            <button id="searchIng">Search</button>
           </div>
      
     </div>
   </form>
+
+<!--API KEY RECIPES
+key: API Key
+  q: (optional) Search Query (Ingredients should be separated by commas). If this is omitted top rated recipes will be returned.
+  sort: (optional) How the results should be sorted. See Below for details.
+  page: (optional) Used to get additional results
+  url : https://www.food2fork.com/api/search?key=YOUR_API_KEY&q=chicken%20breast&page=2 
+
+-->
+
+<script>
+$("#searchIng").on("click", function(event) {
+
+ event.preventDefault();
+
+var ApiKey = "d0bcb31eb08ea0a4b15c4b52b6bb2d6f";
+var search = $("#input-Search-Ingredient").val().trim();;
+var queryURL= "https://www.food2fork.com/api/search?key="+ ApiKey + "&q="+ search + "&page=2";
+
+
+
+  $.ajax({
+        url: queryURL,
+        method: "GET"
+      })
+
+.then(function(response) {
+console.log(response);
+
+
+});
+});
+
+
+</script>
