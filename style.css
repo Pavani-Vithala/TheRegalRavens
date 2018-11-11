@@ -5,7 +5,7 @@ header{
     font-family: 'Anton', sans-serif;
     text-align: center;
     font-size: 40px;
-    background-image: url("../images/logo_best_recipe.png")
+    background-image: url("../images/logo_best_recipe_red.png")
 
     /*background: url("../images/concrete_seamless.png");
 }*/
@@ -34,7 +34,7 @@ header{
 .video-Item{
     height: 200px;
     width: 25%;
-    background-color: rgba(197, 38, 126, 0.5);
+    background-color:rgba(250, 0, 0, 0.5);
     color: white;
     text-align: center;
     margin-bottom: 20px;
@@ -61,7 +61,7 @@ form{
 
 button{
     margin-top: 15px;
-    background-color: rgb(230, 87, 134);
+    background-color:red;
     padding: 15px, 60px;
     text-align: center;
     text-decoration: none;
@@ -84,6 +84,6 @@ button{
 }
 
 body{
-    background-image: url(logo_best_recipe.png);
+    background-image: url(logo_best_recipe_red.png);
     background-repeat: no-repeat;
 }

@@ -14,7 +14,7 @@
 
   <body>
       <header>
-            <img src="logo_best_recipe.png"width="200px">
+            <img src="logo_best_recipe_red.png"width="200px">
           Best Recipe - Best Price
           
       </header>
@@ -96,12 +96,25 @@ var queryURL= "https://www.food2fork.com/api/search?key="+ ApiKey + "&q="+ searc
 
     var recipe = $("<div>");
     recipe.addClass("recipe-Item");
-    console.log(response["recipes"]);
+    //console.log(response["recipes"]);
     recipe.text(response["recipes"][0].title);
-    recipe.text(response["recipes"][0].source_url);
-    recipe.text(response["recipes"][0].image_url);
-
     $(".recipe").append(recipe);
+    
+
+    var urlRecipe = $("<div");
+    urlRecipe.addClass ("recipe-Item");
+    //console.log(response["recipes"]);
+    recipe.text(response["recipes"][0].source_url);
+    $(".recipe").append(urlRecipe);
+
+    
+    var imageUrl = $("<img>").attr("src", image_url);
+    imageUrl.addClass ("recipe-Item");
+    //console.log(response["recipes"]);
+    recipe.text(response["recipes"][0].image_url);
+    $(".recipe").append(imageUrl);
+
+    
 
     });
 }).error(function(err){
