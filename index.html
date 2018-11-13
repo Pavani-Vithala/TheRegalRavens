@@ -2,56 +2,58 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Best Recipe Best Price</title>
-  <!-- Bootstrap CSS CDN  -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
-  <link rel="stylesheet" type="text/css" href="style.css">
- <!-- JQuery   -->
-  <script src="https://code.jquery.com/jquery.js"></script>
-<!-- Google Fonts   -->
-  <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Best Recipe Best Price</title>
+    <!-- Bootstrap CSS CDN  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- JQuery   -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Google Fonts   -->
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
 </head>
-  <body>
-      <header>
-           <!-- <img src="logo_best_recipe_red.png"width="200px">-->
-          Best Recipe - Best Price
-          
-      </header>
-  
 
-  <div class="left-panel">
+<body>
+    <header>
+        <!-- <img src="logo_best_recipe_red.png"width="200px">-->
+        Best Recipe - Best Price
+
+    </header>
+
+
+    <div class="left-panel">
         <div class="videos" id="Recipes">
-           <!-- <div class="video-Item" id="video1">VIDEO RECIPE 1</div>
+            <!-- <div class="video-Item" id="video1">VIDEO RECIPE 1</div>
             <div class="video-Item" id="video2">VIDEO RECIPE 2</div>
             <div class="video-Item" id="video3">VIDEO RECIPE 3</div>-->
         </div>
         <div class="recipe">
-         <!--   <div class="Ingredient-List" id="list1">Ingredient-List</div>
+            <!--   <div class="Ingredient-List" id="list1">Ingredient-List</div>
             <div class="Ingredient-List" id ="list2">Ingredient-List</div>
             <div class="Ingredient-List" id="list3">Ingredient-List</div>-->
 
         </div>
 
-  </div>
-  
+    </div>
 
 
-<div class="right-panel">
+
+    <div class="right-panel">
         <form>
             <div class="row">
                 <div class="form-group col-md-6">
                     <label for="input-Search-Ingredient"></label>
                     <input type="Ingredient" class="form-control" id="input-Search-Ingredient" placeholder="Ingredient">
                     <button id="searchIng">Search</button>
-                    </div>
+                </div>
             </div>
         </form>
-</div>
+    </div>
 
 </body>
-</html>  
-  
+
+</html>
+
 
 <!--API KEY RECIPES
 key: API Key
@@ -110,69 +112,98 @@ var queryURL= "https://www.food2fork.com/api/search?key="+ ApiKey + "&q="+ searc
 });-->
 
 <script>
-var ajaxResponse;
-$("#searchIng").on("click", function(event) {
- event.preventDefault();
- //API for FOOD and Fork to obtain recipe list
- //var ApiKey = "280029588e92537b7a82371cbb66b661";
- //var search = $("#input-Search-Ingredient").val().trim();
-// var queryURL= "https://www.food2fork.com/api/search?key="+ ApiKey + "&q="+ search; // + "&page=2";
-/*$.ajax({
-        url: queryURL,
-        method: "GET"
-      })
-.then(function(response) {
-    response = JSON.parse(response);
-    //var result = response["recipes"];
-   // console.log("The result is " +result);
-   console.log(response);
-    // console.log(response.count);
-   // var recipe = response["recipes"][0].title;
-    //recipe.addClass("recipe-Item");
-    //console.log(response["recipes"]);
-    //recipe.text(response["recipes"][0].title);
-    //console.log("The recipe is :" +recipe)
-    //$("#video1").text(recipe);
+    $(document).ready(function () {
+    var ajaxResponse;
+    $("#searchIng").on("click", function (event) {
+        event.preventDefault();
+        $("#Recipes").empty();
+        //API for FOOD and Fork to obtain recipe list
+        //var ApiKey = "280029588e92537b7a82371cbb66b661";
+        //var search = $("#input-Search-Ingredient").val().trim();
+        // var queryURL= "https://www.food2fork.com/api/search?key="+ ApiKey + "&q="+ search; // + "&page=2";
+        /*$.ajax({
+                url: queryURL,
+                method: "GET"
+              })
+        .then(function(response) {
+            response = JSON.parse(response);
+            //var result = response["recipes"];
+           // console.log("The result is " +result);
+           console.log(response);
+            // console.log(response.count);
+           // var recipe = response["recipes"][0].title;
+            //recipe.addClass("recipe-Item");
+            //console.log(response["recipes"]);
+            //recipe.text(response["recipes"][0].title);
+            //console.log("The recipe is :" +recipe)
+            //$("#video1").text(recipe);
+        
+        
+        });*/
+        //API for YoutTube data to get the videos
 
+        var ApiKey = "1";
+        //var search = "Cheese";
+        var search = $("#input-Search-Ingredient").val().trim();
+        var queryURL = "https://www.themealdb.com/api/json/v1/1/search.php?s=" + search;
+        console.log("The query url is " + queryURL);
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        })
+            .then(function (response) {
+                // response = JSON.parse(response);
+                console.log(response);
+                ajaxResponse = response;
+                var result = response["meals"];
+                var len = result.length;
+                console.log("The length of the array is :" + len);
 
-});*/
-//API for YoutTube data to get the videos
+                if (len > 3)
+                    len = 3;
+                else
+                    len = len;
 
-var ApiKey = "1";
- //var search = "Cheese";
- var search = $("#input-Search-Ingredient").val().trim();
- var queryURL= "https://www.themealdb.com/api/json/v1/1/search.php?s=" +search;
- console.log("The query url is "+queryURL);
-$.ajax({
-        url: queryURL,
-        method: "GET"
-      })
-.then(function(response) {
-   // response = JSON.parse(response);
-    console.log(response);
-    var result = response["meals"];
-    console.log(result);
-    for (var i = 0; i < 3; i++) {
-        var videoDiv = $("<div>");
-        var imageLink_i = result[i]["strMealThumb"];
-    var image_url_i = $("<img>");
-    image_url_i.attr("src",imageLink_i);
-    
-    videoDiv.append(image_url_i);
-    videoDiv.css("height","50px");
-    videoDiv.css("width","50px");
-    var ingredients = result[i]["strIngredient1"];
-     $("#list1").text(ingredients[i]);
-   //console.log("The video link is "+videoLink);
-   $("#Recipes").append(videoDiv);
-  // var embedVideo = ("<iframe>");
-   // embedVideo.attr("id","video1");
-  //  embedVideo.attr("src",videoLink)
-  // <iframe width="560" height="315" src="https://www.youtube.com/embed/UhQPwO4uymo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-}
+                for (var i = 0; i < len; i++) {
+                    var videoDiv_i = $("<div>");
+                    videoDiv_i.addClass("recipeVideos");
+                    var imageLink_i = result[i]["strMealThumb"];
+                    var videoLink_i = result[i]["strYoutube"];
+                    var recipeName_i = result[i]["strMeal"];
+                    console.log("The title of the recipe is " + recipeName_i);
+                    videoDiv_i.text(recipeName_i);
+                    // videoDiv_i.css("height","100px");
+                    //videoDiv_i.css("width","100px");
+                    var image_url_i = $("<img>");
+                    image_url_i.attr("src", imageLink_i);
+                    image_url_i.attr("href",videoLink_i);
+                    videoDiv_i.css('float', 'left');
+                    videoDiv_i.css('margin', '5px');
+                    videoDiv_i.css('border', 'solid');
+                    videoDiv_i.css('border-width', '1px');
+                    //image_url_i.wrap("<a href="+videoLink_i+"></a>");
+                    videoDiv_i.append(image_url_i);
+                    var ingredients = result[i]["strIngredient1"];
+                    $("#list1").text(ingredients[i]);
+                    //console.log("The video link is "+videoLink);
+                    $("#Recipes").append(videoDiv_i);
+                    // var embedVideo = ("<iframe>");
+                    // embedVideo.attr("id","video1");
+                    //  embedVideo.attr("src",videoLink)
+                    // <iframe width="560" height="315" src="https://www.youtube.com/embed/UhQPwO4uymo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                }
+
+            });
+    }).error(function (err) {
+        console.log(err);
+    });       
+$(document).on("click", ".recipeVideos", function (event) {
+    event.preventDefault();
+    console.log("Entered Image Click Function:");
+    var result1 = ajaxResponse["meals"];
+    var videoLink = result1[0]["strYoutube"];
+    console.log("The videoLink is "+videoLink);
+
 });
-}).error(function(err){
-    console.log(err);
 });
-
 </script>
