@@ -47,12 +47,30 @@
                         videoDiv_i.css('margin', '5px');
                         videoDiv_i.css('border', 'solid');
                         videoDiv_i.css('border-width', '1px');
-                       // $("img").wrap("<a href="+videoLink_i+"></a>");
                         videoDiv_i.append(image_url_i);
-                        var ingredients = result[i]["strIngredient1"];
-                        $("#list1").text(ingredients[i]);
-                        //console.log("The video link is "+videoLink);
                         $("#Recipes").append(videoDiv_i);
+                    }
+                    
+                    
+                        for(var i=0;i<len;i++)
+                        {
+                            var ingredientsList_i = [];
+                        for (j = 1; j <= 20; j++) {
+                             var ingredient = result[i]["strIngredient"+j];
+                            //console.log("The ingredient"+j+"is"+ingredient);
+                            if (ingredient != "" && ingredient != null) {
+                                ingredientsList_i.push(ingredient);
+                               // k++;
+                                console.log(ingredientsList_i);
+                               // ingList_j.append(ingredient);
+                            }
+                                            
+                        
+                        
+                    }
+                        // $("#list"+i).append(ingList);
+                        $("#list"+i).append(ingredientsList_i);
+                        //$("#list"+i).append("<br>");
                         // var embedVideo = ("<iframe>");
                         // embedVideo.attr("id","video1");
                         //  embedVideo.attr("src",videoLink)
