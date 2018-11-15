@@ -20,16 +20,14 @@ header{
 {
     display:flex;
     justify-content: space-between;
-    margin-top:200px;
+    margin-top:300px;
+    /*float:left;*/
    
    /* background: url(assets/images/logo_best_recipe.png);*/
     
 }
 
-#list0,#list1,#list2
-{
-    float:left;
-}
+
 
 .Ingredient-List,
 {
@@ -39,7 +37,7 @@ header{
     color: white;
     text-align: center;
     margin: 20px;
-    
+    /*float:left;*/
     border-radius: 25px;
    /* background: url(assets/images/logo_best_recipe.png); background-image: url(assets/images/logo_best_recipe.png);*/
 }
@@ -101,7 +99,7 @@ a {
     
 }
 
-.recipe1,.recipe2,.recipe3
+/*.recipe1,.recipe2,.recipe3
 {
     float:left;
-}
+}*/

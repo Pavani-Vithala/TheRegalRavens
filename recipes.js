@@ -56,40 +56,67 @@ $(document).ready(function () {
                         
                     }
 
-                    //$("#Recipes").append("<br><br>");
-                  
-                    for(var i=0;i<len;i++)
-                    {
-                        var ingredientsList_i = [];
-                    for (j = 1; j <= 20; j++) {
-                         var ingredient = result[i]["strIngredient"+j];
-                        //console.log("The ingredient"+j+"is"+ingredient);
-                        if (ingredient != "" && ingredient != null) {
-                            ingredientsList_i.push(ingredient);
-                           // k++;
-                            console.log(ingredientsList_i);
-                           // ingList_j.append(ingredient);
-                            var listIngre = $("<div>");
-                            listIngre.append("<br>");
-                        listIngre.text(ingredient);
-                        listIngre.append("<br>");
-                        $("#list"+i).append(listIngre);
-                         
+                          
+            for(var i=0;i<len;i++)
+                   {
+                       var ingredientsList_i = [];
+                   for (j = 1; j <= 20; j++) {
+                        var ingredient = result[i]["strIngredient"+j];
+                        var price = Math.floor(Math.random() * (30 - 10 + 1)) + 10;
+                        //console.log("The price is "+price);
+                       //console.log("The ingredient"+j+"is"+ingredient);
+                       if (ingredient != "" && ingredient != null) {
+                           ingredientsList_i.push(ingredient);
+                          
+                           console.log(ingredientsList_i);
+                           var listIngre = $("<div>");
+                           listIngre.append("<br><br><br><br>");
+                          // var price = getPrice(ingredient);
+                       listIngre.text(ingredient+":  $" +price);
+                       //listIngre.text(ingredient);
+                       listIngre.append("<br>");
+                       $("#list"+i).append(listIngre);
 
-                        }
+
+                       }
+
+
+                    }
+
+
+
+
+               }
+                           
+             /* function getPrice(ingredient){
+                var ApiKey = "m29hq47fka5q47y4qrdqyz3a";
+                //var search = $("#input-Search-Ingredient").val().trim();;
+                var queryURL= "http://api.walmartlabs.com/v1/search?apiKey=m29hq47fka5q47y4qrdqyz3a&query=" +ingredient+ "&categoryId=976759&sort=bestseller&responseGroup=full"
+                
+        
+                $.ajax({
+                    url: queryURL,
+                    method: "GET",
+                    dataType: 'jsonp'
+                })
+                
+                    .then(function(response) {
+                        var result=response
+                        console.log("WALMART DATA----");
+                        console.log (result);
+                        /*var recipe = $("<div>");
+                        recipe.addClass("Ingredient-Item");
+                        console.log(response["Ingredient-Item"]);
+                        recipe.text(response["Ingredient-Item"][0].title);
+                        recipe.text(response["Ingredient-Item"][0].source_url);
+                        recipe.text(response["Ingredient-Item"][0].image_url);
+                        $(".recipe").append(recipe);
                        
-                  
-                        
-   
-                                        
-                    
-                    
-                }
-                    
-
-            }                 
-                           
-                           
+        
+                });
+        
+        }*/
+                          
                               
                                             
                         

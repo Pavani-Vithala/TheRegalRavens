@@ -1,4 +1,3 @@
-
 header{
     padding: 40px;
     background-color: black;
@@ -6,17 +5,17 @@ header{
     font-family: 'Anton', sans-serif;
     text-align: center;
     font-size: 40px;
-    background-image: url("../images/logo_best_recipe_red.png")
+    background-image: url("logo_best_recipe.png");
 
-    background: url("../images/concrete_seamless.png");
-}
+    /*background: url("../images/concrete_seamless.png");
+}*/
 
 }
 
 /*.row{
     float: right;
-}*/
-
+}
+*/
 
 .row{
     margin-left: 400 px;
@@ -28,22 +27,39 @@ header{
     display:flex;
     justify-content: space-between;
     margin-top:150px;
-    background: url(logo_best_recipe.png);
+    /*background: url(logo_best_recipe.png);*/
     
 }
 
-.Ingredient-List,
-.video-Item{
+.video-Item
+{
+
     height: 200px;
     width: 25%;
-    background-color:rgba(250, 0, 0, 0.5);
+    background-color:rgb(0, 0, 0);
     color: white;
     text-align: center;
     margin-bottom: 20px;
     margin-top: 20px;
     border-radius: 25px;
-    background: url(logo_best_recipe.png); background-image: url(logo_best_recipe.png);
 }
+
+
+.Ingredient-List
+{
+    height: 600px;
+    width: 25%;
+    background-color:rgb(0, 0, 0);
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border-radius: 25px;
+    margin-right:40px;
+    
+    /*background: url(logo_best_recipe.png); background-image: url(logo_best_recipe.png);*/
+}
+
 
 
 
@@ -86,12 +102,19 @@ button{
 }
 
 body{
-    background-image: url(logo_best_recipe_red.png);
+    background-image: url(logo_best_recipe_transparent.png);
     background-repeat: no-repeat;
 }
-/*.recipeVideos img
-{
-    width: 100%;
-    height: auto;
 
-}*/
+/*.a{
+    border: 200px;
+    }
+    */
+
+a {
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    
+}
+
