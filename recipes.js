@@ -1,20 +1,19 @@
-
 $(document).ready(function () {
-    var price = 0;
+
     $("#Recipes").empty();
     $(".recipe").hide();
     $("#searchIng").on("click", function (event) {
         event.preventDefault();
         $("#Recipes").empty();
         $(".recipe").hide();
-       
+
         //API for YoutTube data to get the videos
         var search = $("#input-Search-Ingredient").val().trim();
         if (search == "") {
             alert("please enter the ingredient:");
         } else {
             $(".recipe").show();
-           // var ApiKey = "1";
+            // var ApiKey = "1";
             var queryURL = "https://www.themealdb.com/api/json/v1/1/search.php?s=" + search;
             //var queryURL = "https://www.themealdb.com/api/json/v1/1/search.php?s=egg"
             console.log("The query url is " + queryURL);
@@ -58,16 +57,16 @@ $(document).ready(function () {
 
 
                     for (var i = 0; i < len; i++) {
-                     
+
                         var ingredientsList_i = [];
                         for (j = 1; j <= 20; j++) {
                             var ingredient = result[i]["strIngredient" + j];
-                            
+
                             if (ingredient != "" && ingredient != null) {
                                 ingredientsList_i.push(ingredient);
                                 console.log(ingredientsList_i);
-                                 getPrice(ingredient,i);
-                             
+                                getPrice(ingredient, i);
+
 
 
                             }
@@ -76,46 +75,49 @@ $(document).ready(function () {
                         }
 
 
-                        }
-                
+                    }
+                    function getPrice(ingredient, i) {
+                        var price = 0;
+                        console.log("Entered getPrice Function:");
+                        var queryURL = "http://api.walmartlabs.com/v1/search?apiKey=m29hq47fka5q47y4qrdqyz3a&query=" + ingredient + "&categoryId=976759&sort=bestseller&responseGroup=full"
+
+
+                        $.ajax({
+                            url: queryURL,
+                            method: "GET",
+                            dataType: 'jsonp'
+                        })
+
+                            .then(function (response) {
+                                var result = response["items"][0];
+                                // console.log("WALMART DATA----");
+                                //console.log(result);
+                                price = result["salePrice"];
+                                var listIngre = $("<div>");
+                                listIngre.append("<br><br><br><br>");
+                                listIngre.text(ingredient + ":  $" + price);
+                                listIngre.append("<br>");
+                                $("#list" + i).append(listIngre);
+                            });
+
+                    }
 
                 });
-                 function getPrice(ingredient,i) {
-                   var price = 0;
-                   console.log("Entered getPrice Function:");
-                   var queryURL = "http://api.walmartlabs.com/v1/search?apiKey=m29hq47fka5q47y4qrdqyz3a&query=" + ingredient + "&categoryId=976759&sort=bestseller&responseGroup=full"
-        
-        
-                    $.ajax({
-                        url: queryURL,
-                        method: "GET",
-                        dataType: 'jsonp'
-                    })
-        
-                        .then(function (response) {
-                            var result = response["items"][0];
-                           // console.log("WALMART DATA----");
-                            //console.log(result);
-                            price = result["salePrice"];
-                            var listIngre = $("<div>");
-                                listIngre.append("<br><br><br><br>");
-                                listIngre.text(ingredient + ":  $"+price);
-                                listIngre.append("<br>");
-                                
-                                $("#list" + i).append(listIngre);                             
-                        });
-                       
-                }        
-                
 
-            }   
-    
+
+
+        }
+
     }).error(function (err) {
         console.log(err);
- 
+
     });
 
 });
+
+
+
+
 
 
 
