@@ -1,5 +1,4 @@
 $(document).ready(function () {
-   
    $("#Recipes").empty();
     $(".recipe").hide();
     $("#searchIng").on("click", function (event) {
@@ -7,7 +6,7 @@ $(document).ready(function () {
         $("#Recipes").empty();
         $(".recipe").hide();
 
-        //API for YoutTube data to get the videos
+        //API for mealDB data to get the videos
         var search = $("#input-Search-Ingredient").val().trim();
         if (search == "") {
             alert("please enter the ingredient:");
