@@ -14,6 +14,8 @@ The above problems are solved as below.
 
 4. The images are hyperlinks to videos which show step by step process to cook the recipe. The video opens in youtube in a different window ensuring all the recipe details are intact on the main page.
 
+The app can be accessed from the link https://pavani-vithala.github.io/TheRegalRavens/
+
 
 Lupita
 1. Front end design
