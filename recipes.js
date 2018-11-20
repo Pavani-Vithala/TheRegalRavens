@@ -79,7 +79,7 @@ $(document).ready(function () {
                     function getPrice(ingredient, i) {
                         var price = 0;
                         console.log("Entered getPrice Function:");
-                        var queryURL = "http://api.walmartlabs.com/v1/search?apiKey=m29hq47fka5q47y4qrdqyz3a&query=" + ingredient + "&categoryId=976759&sort=bestseller&responseGroup=full"
+                        var queryURL = "https://api.walmartlabs.com/v1/search?apiKey=m29hq47fka5q47y4qrdqyz3a&query=" + ingredient + "&categoryId=976759&sort=bestseller&responseGroup=full"
 
 
                         $.ajax({
