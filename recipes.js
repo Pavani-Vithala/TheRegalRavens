@@ -64,7 +64,7 @@ $(document).ready(function () {
                             if (ingredient != "" && ingredient != null) {
                                 ingredientsList_i.push(ingredient);
                                 console.log(ingredientsList_i);
-                                getPrice(ingredient, i);
+                                getPrice(ingredient, j);
 
 
 
